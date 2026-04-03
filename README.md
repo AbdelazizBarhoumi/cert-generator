@@ -1,59 +1,211 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Certificate Generator - Automated Certificate Creation System
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A powerful web application for bulk generation of certificates, ID cards, and PDF documents. Upload your template, position text fields visually, import data from CSV/Excel, and download personalized documents in seconds.
 
-## About Laravel
+## ✨ Features
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+### Certificate Generator
+- Upload PDF or image templates (PDF, PNG, JPG)
+- Visual drag-and-drop text field positioning
+- Live preview with real-time font customization
+- Support for name, ID, and unlimited custom fields
+- Bulk generation from CSV/Excel data
+- Download all certificates as a ZIP file
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### ID Card Maker
+- Preset card sizes (Credit Card, CR80, Business Card, A7)
+- Custom dimension support
+- Multiple output formats:
+  - Individual PDF files (ZIP)
+  - Single PDF with one card per page
+  - Grid layout (multiple cards per page)
+- Perfect for employee badges, membership cards, event passes
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### PDF Editor
+- Add text fields to any PDF document
+- Full font customization (family, size, weight, color, alignment)
+- Support for custom font uploads
+- Direct PDF export
 
-## Learning Laravel
+### General Features
+- **No signup required** - Start creating immediately
+- **Unlimited documents** - No generation limits
+- **Client-side processing** - Your data stays private
+- **Modern UI** - Clean, intuitive wizard-based interface
+- **Live preview** - See changes instantly as you customize
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+## 🛠️ Tech Stack
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- **Backend:** PHP 8.2+, Laravel 12
+- **Frontend:** React 19, TypeScript, Vite 7
+- **Styling:** Tailwind CSS 4
+- **UI Components:** Radix UI, shadcn/ui patterns
+- **PDF Processing:** pdf-lib, pdfjs-dist
+- **Data Handling:** xlsx (Excel/CSV parsing), JSZip, FileSaver
+- **State Management:** React Query, React Hook Form
+- **Charts:** Recharts
 
-## Laravel Sponsors
+## 📋 Requirements
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+- PHP 8.2 or higher
+- Composer 2.x
+- Node.js 18+ and npm
+- SQLite (default) or MySQL/PostgreSQL
 
-### Premium Partners
+## 🚀 Installation
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/yourusername/cert-generator.git
+   cd cert-generator
+   ```
 
-## Contributing
+2. **Run the setup script**
+   ```bash
+   composer setup
+   ```
+   This will:
+   - Install PHP dependencies
+   - Create `.env` file from `.env.example`
+   - Generate application key
+   - Run database migrations
+   - Install npm dependencies
+   - Build frontend assets
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+3. **Or install manually**
+   ```bash
+   # Install PHP dependencies
+   composer install
 
-## Code of Conduct
+   # Copy environment file
+   cp .env.example .env
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+   # Generate application key
+   php artisan key:generate
 
-## Security Vulnerabilities
+   # Run migrations
+   php artisan migrate
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+   # Install npm dependencies
+   npm install
 
-## License
+   # Build assets
+   npm run build
+   ```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## ⚙️ Configuration
+
+### Environment Variables
+
+Copy `.env.example` to `.env` and configure as needed:
+
+```env
+APP_NAME="Certificate Generator"
+APP_ENV=local
+APP_DEBUG=true
+APP_URL=http://localhost:8000
+
+DB_CONNECTION=sqlite
+# Or configure MySQL/PostgreSQL:
+# DB_CONNECTION=mysql
+# DB_HOST=127.0.0.1
+# DB_PORT=3306
+# DB_DATABASE=cert_generator
+# DB_USERNAME=root
+# DB_PASSWORD=
+```
+
+## 💻 Usage
+
+### Development Server
+
+Start the development server with all services:
+
+```bash
+composer dev
+```
+
+This starts concurrently:
+- Laravel development server
+- Queue worker
+- Log viewer (Pail)
+- Vite dev server with HMR
+
+Then open http://localhost:8000 in your browser.
+
+### Production Build
+
+```bash
+npm run build
+php artisan serve
+```
+
+### Running Tests
+
+```bash
+composer test
+```
+
+## 📖 How to Use
+
+### Creating Certificates
+
+1. **Upload Template** - Upload your certificate design (PDF or image)
+2. **Position Fields** - Click "Draw Area" and drag on the template to position text fields
+3. **Customize Fonts** - Adjust font family, size, weight, color, and alignment
+4. **Import Data** - Upload a CSV/Excel file with columns: `name`, `id` (optional), and any custom fields
+5. **Generate** - Click generate and download your certificates as a ZIP file
+
+### Creating ID Cards
+
+1. **Select Card Size** - Choose from presets or enter custom dimensions
+2. **Upload Design** - Upload your ID card template
+3. **Position Fields** - Place name, ID, and custom fields
+4. **Import Data** - Upload recipient data
+5. **Choose Output** - Select individual files, single PDF, or grid layout
+6. **Generate** - Download your ID cards
+
+### CSV/Excel Format
+
+Your data file should have at minimum a `name` column:
+
+| name | id | department | title |
+|------|-----|------------|-------|
+| John Doe | EMP001 | Engineering | Developer |
+| Jane Smith | EMP002 | Marketing | Manager |
+
+## 📁 Project Structure
+
+```
+cert-generator/
+├── app/                    # Laravel application
+│   ├── Http/Controllers/   # HTTP controllers
+│   └── Models/             # Eloquent models
+├── resources/
+│   ├── js/                 # React frontend
+│   │   ├── components/     # React components
+│   │   │   ├── generator/  # Wizard components
+│   │   │   ├── landing/    # Landing page
+│   │   │   └── ui/         # UI components
+│   │   ├── pages/          # Page components
+│   │   ├── services/       # PDF generation logic
+│   │   └── types/          # TypeScript types
+│   └── views/              # Blade templates
+├── routes/                 # Laravel routes
+├── database/               # Migrations and seeders
+└── public/                 # Public assets
+```
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 📄 License
+
+This project is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
